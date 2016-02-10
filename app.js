@@ -33,19 +33,18 @@ $(function(){
 
               var videoId = value.id.videoId;
 
+              //build the HTML and append to the DOM using Underscore
+
               var showResults = function (str, videoId) {
 
-                  $('#movies').append('<img src="' + str + '">');
-
-                  var currentImg = $('img:last');
-
-                  currentImg.css({'width':w,'height':h});
-
-                  currentImg.wrap("<a href='https://www.youtube.com/watch?v=" + videoId + "'</a>");
+                  var compiled = _.template($('.movies').html());
+                  
+                  $('#movies').append(compiled({imageURL:str, video:videoId}));
 
               };
 
               showResults(str, videoId);
+
 
             });
 
